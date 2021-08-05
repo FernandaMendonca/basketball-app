@@ -1,35 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import firebase from '../../firebase';
 import Input from '../Form/Input';
 import Button from '../Form/Button';
 import useForm from '../../hooks/useForm';
+import styles from '../Home.module.css';
 
 const LoginForm = () => {
     const email = useForm('email');
     const password = useForm();
+    const navigate = useNavigate();
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-
-        if (email.validate() && password.validate()) {
-            firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-                .catch(err => {
-                    console.log(err);
-                })
+        try {
+            await firebase.auth().signInWithEmailAndPassword(email.value, password.value);
+            navigate('/home', { replace: true });
+        }
+        catch (err) {
+            console.log(err);
+            alert(err.message);
         }
     }
 
-
-    return (<section>
-        <h1>Login</h1>
+    return (<div className={styles.loginForm}>
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
             <Input label="Email" type="email" name="email" {...email} />
             <Input label="Password" type="password" name="password" {...password} />
             <Button>Login</Button>
         </form >
-        <Link to="/login/signup">Sign Up</Link>
-    </section>);
+    </div>);
 };
 
 export default LoginForm;

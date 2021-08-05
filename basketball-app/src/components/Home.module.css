@@ -1,0 +1,54 @@
+.main {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 1rem;
+}
+
+div h1 {
+    margin: 1rem;
+    padding: 1rem;
+    text-align: left;
+    color: #3f3f3f;
+    border-left: 4px solid #E3170A;
+    text-transform: uppercase;
+}
+
+.title {
+    border-left: none;
+    border-right: 4px solid #E3170A;
+    text-align: right;
+}
+
+.section {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.loginForm {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgb(0 0 0 / 20%);
+    padding: 1rem;
+    height: 50vh;
+    width: 25vw;
+}
+
+.loginForm h2 {
+    color: #3F3F3F;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.signUp {
+    height: 58vh;
+    padding: 2rem;
+}
+
+svg {
+    height: 70vh;
+    width: 40vw;
+}
+
+.results {
+    height: 70vh;
+}
